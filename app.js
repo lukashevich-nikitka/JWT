@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors')
+const express = require("express");
+const cors = require("cors")
 
 const PORT = process.env.PORT ?? 4200;
 const app = express();
@@ -12,6 +12,6 @@ app.use(
     })
   );
 
-// app.use("/api/authentication", require("./routes/processing"))
+app.use("/api", require("./routes/processing"))
 
 app.listen(PORT, () => console.log(`Server has been started on port ${PORT}`))
