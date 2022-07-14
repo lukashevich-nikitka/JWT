@@ -1,23 +1,26 @@
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Auth from './pages/Auth/Auth';
+import Login from './pages/Login/Login';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <nav>
+          <ul className="nav-list">
+            <li className='link'><Link to="/registration">Registration</Link></li>
+            <li className='link'><Link to="/login">Login</Link></li>
+          </ul>
+        </nav>
       </header>
-    </div>
-  );
+      <Routes>
+        <Route path="/registration" element={<Auth />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
+  )
 }
 
 export default App;

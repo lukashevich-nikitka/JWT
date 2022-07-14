@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "../../styles/auth.css";
+import Main from "../Application/Main";
 
 function Login() {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = function (data) {
-      axios
-        .post(`http://localhost:4200/api/login`, data)
-        .then((res) => {
-          console.log(res); localStorage.setItem('jwt', JSON.stringify(res.data.token));
-        });
-    };
+  const [verifiedStatus, setVerifiedStatus] = useState("login");
+  const { register, handleSubmit } = useForm();
+  const onSubmit = function (data) {
+    axios.post(`http://localhost:4200/api/login`, data).then((res) => {
+      if (res.data === "Пользователя с такими данными не существует!") {
+        setVerifiedStatus("error");
+        console.log(res)
+      } else {
+        console.log(res);
+        setVerifiedStatus('access')
+        localStorage.setItem("jwt", JSON.stringify(res.data.token));
+      }
+    });
+  };
+  if (verifiedStatus === "login") {
     return (
       <form className="auth-form-wrapper" onSubmit={handleSubmit(onSubmit)}>
         <div>Login</div>
@@ -35,6 +43,9 @@ function Login() {
         </Button>
       </form>
     );
+  } else if (verifiedStatus === 'access') {
+    return <Main />
   }
-  
-  export default Login;
+}
+
+export default Login;
