@@ -12,9 +12,7 @@ function Login() {
     axios.post(`http://localhost:4200/api/login`, data).then((res) => {
       if (res.data === "Пользователя с такими данными не существует!") {
         setVerifiedStatus("error");
-        console.log(res)
       } else {
-        console.log(res);
         setVerifiedStatus('access')
         localStorage.setItem("jwt", JSON.stringify(res.data.token));
       }

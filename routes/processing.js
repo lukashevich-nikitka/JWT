@@ -7,7 +7,9 @@ const jwtKey = require("../secretKey.json");
 const router = Router();
 
 router.post("/auth", async (req, res) => {
-  if (database.some((el) => el.email = req.body.email)) {
+  console.log(req.body)
+  console.log(database)
+  if ([...database].some((el) => el.email === req.body.email)) {
     res.json("Пользователь с таким email уже существует");
   } else {
     fs.writeFile(
@@ -53,5 +55,10 @@ router.get("/getid", async (req, res) => {
     res.json(database[database.length - 1].id);
   }
 });
+
+router.get("/get/:jwt", async (req, res) => {
+  const userData = jwt.verify(JSON.parse(req.params.jwt), jwtKey);
+  (userData) ? res.json(userData) : res.json('Ты пытаешься обмануть меня!');
+})
 
 module.exports = router;

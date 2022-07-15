@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-function UserApp() {
-  const [userData, setUserData] = useState({});
-  return <div>{`Hello, ${userData.role} ${userData.name} ${userData.surname}`}</div>;
+function UserApp(props) {
+  return <div>{`Hello, ${props.userParameters.role} ${props.userParameters.name} ${props.userParameters.surname}`}</div>;
 }
 
 export default UserApp;

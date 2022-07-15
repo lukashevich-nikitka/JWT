@@ -18,3 +18,7 @@ a {
 .link:hover {
   text-decoration: underline;
 }
+
+.error-modale {
+  margin: 0 auto;
+}

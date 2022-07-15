@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-function AdminApp() {
-  const [adminData, setAdminData] = useState({});
-  return <div>{`Hello, ${adminData.role} ${adminData.name} ${adminData.surname}`}</div>;
+function AdminApp(props) {
+  return <div>{`Hello, ${props.userParameters.role} ${props.userParameters.name} ${props.userParameters.surname}`}</div>;
 }
 
 export default AdminApp;
