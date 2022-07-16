@@ -10,8 +10,8 @@ function App() {
       <header>
         <nav>
           <ul className="nav-list">
-            <li className='link'><Link to="/registration">Registration</Link></li>
-            <li className='link'><Link to="/login">Login</Link></li>
+            <li className="link"><Link to="/registration">Registration</Link></li>
+            <li className="link"><Link to="/login">Login</Link></li>
           </ul>
         </nav>
       </header>
@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
-  )
+  );
 }
 
 export default App;
